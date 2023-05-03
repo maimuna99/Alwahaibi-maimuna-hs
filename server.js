@@ -1,15 +1,20 @@
-function tree(node, prefix = "") {
-  console.log(prefix + node.name);
-  if (node.items) {
-    node.items.forEach((child, index) => {
-      const isLastChild = index === node.items.length - 1;
-      const newPrefix = prefix + (isLastChild ? "    " : "│   ");
-      tree(child, newPrefix + "├── ");
+function tree(obj, depth = -1, prefix = "", isLast = true) {
+  const padding = " ".repeat(depth >= 0 ? depth * 4 : 0);
+  const connector = isLast ? "└── " : "├── ";
+  const nextPrefix = prefix + (isLast ? "    " : "│   ");
+
+  console.log(`${padding}${prefix}${connector}${obj.name}`);
+
+  if (obj.items && depth !== 0) {
+    const lastIndex = obj.items.length - 1;
+    obj.items.forEach((item, index) => {
+      const isLastItem = index === lastIndex;
+      tree(item, depth - 1, nextPrefix, isLastItem);
     });
   }
 }
 
-const hierarchicalObject = {
+const obj = {
   name: 1,
   items: [
     {
@@ -23,4 +28,4 @@ const hierarchicalObject = {
   ],
 };
 
-tree(hierarchicalObject);
+tree(obj);
