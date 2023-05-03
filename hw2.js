@@ -32,4 +32,5 @@ function tree(dir, depth = -1, prefix = "", isLast = true) {
   return { numDirs, numFiles };
 }
 
+
 tree(process.cwd(), 2);
