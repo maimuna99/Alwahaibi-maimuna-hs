@@ -1,0 +1,13 @@
+{
+  "name": "my-hello-world-cli",
+  "version": "1.0.0",
+  "description": "practice cli",
+  "main": "index.js",
+  "bin":"server.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
