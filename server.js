@@ -27,5 +27,9 @@ const obj = {
     },
   ],
 };
+const timeoutObj = setTimeout(() => {
+  console.log("timeout");
+}, 100);
 
+timeoutObj;
 tree(obj);
