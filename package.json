@@ -10,6 +10,7 @@
   "author": "devilsdomain",
   "license": "ISC",
   "dependencies": {
+    "oclif": "^3.9.0",
     "semver": "^7.5.0",
     "treeify": "^1.1.0"
   }
