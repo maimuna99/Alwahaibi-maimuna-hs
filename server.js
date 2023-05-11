@@ -1,8 +1,9 @@
+const http = require("http");
+
 function tree(obj, depth = -1, prefix = "", isLast = true) {
   const padding = " ".repeat(depth >= 0 ? depth * 4 : 0);
   const connector = isLast ? "└── " : "├── ";
   const nextPrefix = prefix + (isLast ? "    " : "│   ");
-
   console.log(`${padding}${prefix}${connector}${obj.name}`);
 
   if (obj.items && depth !== 0) {
@@ -32,4 +33,17 @@ const timeoutObj = setTimeout(() => {
 }, 100);
 
 timeoutObj;
+
+const server = http.createServer((req, res) => {
+  setTimeout(() => {
+    console.log(
+      `Received request with method ${req.method} and body ${req.body}`
+    );
+    res.end();
+  }, 100);
+});
+
+server.listen(8080, () => {
+  console.log("Server is running on port 8080");
+});
 tree(obj);
